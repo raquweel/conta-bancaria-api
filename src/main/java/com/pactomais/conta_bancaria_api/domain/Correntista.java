@@ -16,15 +16,16 @@ public class Correntista {
     @Column(nullable = false, unique = true)
     private String documento;
 
-    @Column(nullable = false, unique = true)
-    private String dados_contato;
-}
+    @Column(name = "dados_contato", nullable = false, unique = true)
+    private String dadosContato;
 
-public Correntista() {
-    public Correntista(String nome, String documento, String dados_contato) {
+    public Correntista() {
+    }
+
+    public Correntista(String nome, String documento, String dadosContato) {
         this.nome = nome;
         this.documento = documento;
-        this.dados_contato = dados_contato;
+        this.dadosContato = dadosContato;
     }
 
     //GETTERS
@@ -41,7 +42,7 @@ public Correntista() {
     }
 
     public String getDadosContato() {
-        return dados_contato;
+        return dadosContato;
     }
 
     //SETTERS
@@ -53,9 +54,9 @@ public Correntista() {
         this.documento = documento;
     }
 
-    public void setDadosContado(String dados_contato) {
-        this.dados_contato = dados_contato;
+    public void setDadosContato(String dadosContato) {
+        this.dadosContato = dadosContato;
     }
-}
 
+}
 
