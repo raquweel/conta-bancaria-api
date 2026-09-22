@@ -35,5 +35,14 @@ public Correntista cadastrar(Correntista correntista) {
         return correntistaRepository.save(correntista);
     }
 
+public List<Correntista> listarTodos() {
+    return correntistaRepository.findAll();
+}
+
+public Correntista buscarPorId(Long id) {
+    return correntistaRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Correntista não encontrado com o ID: " + id));
+}
+
     
 }
