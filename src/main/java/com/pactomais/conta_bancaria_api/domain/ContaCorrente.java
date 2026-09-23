@@ -16,8 +16,8 @@ public class ContaCorrente extends Conta {
         super();
     }
 
-    public ContaCorrente(Integer numeroConta, BigDecimal saldo, BigDecimal limite) {
-        super(numeroConta, saldo);
+    public ContaCorrente(Integer numeroConta, BigDecimal saldo, Correntista correntista, BigDecimal limite) {
+        super(numeroConta, saldo, correntista);
         this.limite = limite;
     }
 
