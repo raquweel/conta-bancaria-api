@@ -1,6 +1,7 @@
 package com.pactomais.conta_bancaria_api.controller;
 
 import com.pactomais.conta_bancaria_api.domain.Correntista;
+import com.pactomais.conta_bancaria_api.dto.CorrentistaDTO;
 import com.pactomais.conta_bancaria_api.service.CorrentistaService;
 
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,10 @@ public class CorrentistaController {
 
     // Endpoint para Cadastrar: POST http://localhost:8080/correntistas
     @PostMapping
-    public ResponseEntity<Correntista> cadastrar(@RequestBody Correntista correntista) {
+    public ResponseEntity<Correntista> cadastrar(@RequestBody CorrentistaDTO dto) {
+        // Converte o DTO recebido na requisição para a Entidade do Banco
+        Correntista correntista = new Correntista(dto.getNome(), dto.getDocumento(), dto.getDadosContato());
+        
         Correntista novoCorrentista = correntistaService.cadastrar(correntista);
         return ResponseEntity.status(HttpStatus.CREATED).body(novoCorrentista);
     }
@@ -33,7 +37,7 @@ public class CorrentistaController {
         return ResponseEntity.ok(correntistaService.listarTodos());
     }
 
-    // Endpoint para Buscar por ID: GET http://localhost:8080/correntistas/1
+    // Endpoint para Buscar por ID: GET http://localhost:8080/correntistas/{id}
     @GetMapping("/{id}")
     public ResponseEntity<Correntista> buscarPorId(@PathVariable Long id) {
         return ResponseEntity.ok(correntistaService.buscarPorId(id));
