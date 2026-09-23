@@ -12,7 +12,7 @@ public class ContaPoupanca extends Conta {
         super();
     }
 
-    public ContaPoupanca(Integer numeroConta, BigDecimal saldo) {
-        super(numeroConta, saldo);
+    public ContaPoupanca(Integer numeroConta, BigDecimal saldo, Correntista correntista) {
+        super(numeroConta, saldo, correntista);
     }
 }
